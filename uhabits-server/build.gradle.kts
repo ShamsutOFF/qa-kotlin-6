@@ -51,7 +51,19 @@ dependencies {
     testImplementation("io.ktor:ktor-server-tests:$ktorVersion")
     testImplementation("org.mockito.kotlin:mockito-kotlin:5.2.1")
     testImplementation(kotlin("test"))
-    testImplementation(kotlin("test-junit"))
+//    testImplementation(kotlin("test-junit"))
+    testImplementation("io.kotest:kotest-runner-junit5:5.9.1")
+    testImplementation("io.kotest:kotest-assertions-core:5.9.1")
+    testImplementation("io.kotest:kotest-property:5.9.1")
+    testImplementation("io.mockk:mockk:1.13.16")
+    testImplementation ("com.squareup.okhttp3:mockwebserver:4.9.3")
+    testImplementation ("io.ktor:ktor-client-okhttp:$ktorVersion")
+    testImplementation ("com.squareup.okhttp3:okhttp:4.9.3")
+
+}
+
+tasks.withType<Test>().configureEach {
+    useJUnitPlatform()
 }
 
 tasks.withType<ShadowJar> {
