@@ -80,6 +80,7 @@ class ListHabitsActivity : AppCompatActivity(), Preferences.Listener {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        println("@@@ onCreate()")
         super.onCreate(savedInstanceState)
 
         appComponent = (applicationContext as HabitsApplication).component
@@ -114,6 +115,7 @@ class ListHabitsActivity : AppCompatActivity(), Preferences.Listener {
     }
 
     override fun onResume() {
+        println("@@@ onResume()")
         adapter.refresh()
         screen.onAttached()
         rootView.postInvalidate()
@@ -169,11 +171,13 @@ class ListHabitsActivity : AppCompatActivity(), Preferences.Listener {
 
     @Deprecated("Deprecated in Java")
     override fun onActivityResult(request: Int, result: Int, data: Intent?) {
+        println("@@@ onActivityResult")
         super.onActivityResult(request, result, data)
         screen.onResult(request, result, data)
     }
 
     private fun parseIntents() {
+        println("@@@ parseIntents")
         if (intent == null) return
         if (intent.action == ACTION_EDIT) {
             val habitId = intent.extras?.getLong("habit")
@@ -187,6 +191,7 @@ class ListHabitsActivity : AppCompatActivity(), Preferences.Listener {
     }
 
     override fun onNewIntent(intent: Intent?) {
+        println("@@@ onNewIntent")
         super.onNewIntent(intent)
         setIntent(intent)
     }

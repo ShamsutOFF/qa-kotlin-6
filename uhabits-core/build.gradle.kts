@@ -1,6 +1,12 @@
 plugins {
     kotlin("multiplatform")
     id("org.jlleitschuh.gradle.ktlint")
+    id("io.qameta.allure") version "2.12.0"
+}
+
+allure {
+    autoconfigure = false
+    version = "2.30.0"
 }
 
 kotlin {
@@ -38,13 +44,15 @@ kotlin {
 
         val jvmTest by getting {
             dependencies {
+                val kotestVersion = "5.9.1"
                 implementation(kotlin("test"))
                 // Kotest + MockK
-                implementation("io.kotest:kotest-runner-junit5:5.9.1")
-                implementation("io.kotest:kotest-assertions-core:5.9.1")
-                implementation("io.kotest:kotest-property:5.9.1")
+                implementation("io.kotest:kotest-runner-junit5:$kotestVersion")
+                implementation("io.kotest:kotest-assertions-core:$kotestVersion")
+                implementation("io.kotest:kotest-property:$kotestVersion")
+                implementation("io.kotest.extensions:kotest-extensions-allure:1.4.0")
                 implementation("io.mockk:mockk:1.13.16")
-
+                implementation ("ru.iopump.kotest:kotest-allure:5.4.1")
             }
         }
     }

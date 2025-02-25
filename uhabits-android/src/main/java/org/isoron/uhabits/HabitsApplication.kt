@@ -44,6 +44,7 @@ class HabitsApplication : Application() {
     private lateinit var notificationTray: NotificationTray
 
     override fun onCreate() {
+        println("@@@ HabitsApplication.onCreate")
         super.onCreate()
         context = this
 
