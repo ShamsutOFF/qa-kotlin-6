@@ -140,6 +140,7 @@ dependencies {
     testImplementation("com.google.dagger:dagger:$daggerVersion")
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.mockito.kotlin:mockito-kotlin:5.4.0")
+    androidTestImplementation("androidx.test.uiautomator:uiautomator:2.3.0")
 //    androidTestImplementation ("com.kaspersky.android-components:kaspresso:1.5.2")
 //    androidTestUtil("androidx.test:orchestrator:1.5.1")
 //    androidTestImplementation ("org.hamcrest:hamcrest-library:2.2")
