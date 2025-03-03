@@ -1,3 +1,6 @@
+package org.isoron.uhabits.sync.app
+
+import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import okhttp3.MediaType.Companion.toMediaType

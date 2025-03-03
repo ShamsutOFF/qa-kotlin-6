@@ -98,11 +98,13 @@ android {
 }
 
 dependencies {
+    androidTestImplementation("io.kotest:kotest-runner-junit5-jvm:4.6.0")
     val daggerVersion = "2.51.1"
     val kotlinVersion = "2.1.10"
     val kxCoroutinesVersion = "1.10.1"
     val ktorVersion = "1.6.8"
     val espressoVersion = "3.6.1"
+    val kotestVersion = "5.9.1"
 
     androidTestImplementation("androidx.test.espresso:espresso-contrib:$espressoVersion")
     androidTestImplementation("androidx.test.espresso:espresso-core:$espressoVersion")
@@ -140,10 +142,14 @@ dependencies {
     testImplementation("com.google.dagger:dagger:$daggerVersion")
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.mockito.kotlin:mockito-kotlin:5.4.0")
+
+    androidTestImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
+    androidTestImplementation("io.kotest:kotest-assertions-core:$kotestVersion")
+    androidTestImplementation("io.kotest:kotest-property:$kotestVersion")
     androidTestImplementation("androidx.test.uiautomator:uiautomator:2.3.0")
-//    androidTestImplementation ("com.kaspersky.android-components:kaspresso:1.5.2")
-//    androidTestUtil("androidx.test:orchestrator:1.5.1")
-//    androidTestImplementation ("org.hamcrest:hamcrest-library:2.2")
+    androidTestImplementation ("com.kaspersky.android-components:kaspresso:1.5.2")
+    androidTestUtil("androidx.test:orchestrator:1.5.1")
+    androidTestImplementation ("org.hamcrest:hamcrest-library:2.2")
 }
 
 kapt {

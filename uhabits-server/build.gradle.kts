@@ -39,7 +39,7 @@ dependencies {
     testImplementation("io.kotest:kotest-property:$kotestVersion")
 
     testImplementation("io.kotest.extensions:kotest-extensions-allure:1.4.0") // Расширение Allure для Kotest
-    testImplementation ("ru.iopump.kotest:kotest-allure:5.4.1")
+    testImplementation("ru.iopump.kotest:kotest-allure:5.4.1")
     testImplementation("io.mockk:mockk:1.13.16")
     testImplementation("com.squareup.okhttp3:mockwebserver:4.9.3")
     testImplementation("io.ktor:ktor-client-okhttp:$ktorVersion")
