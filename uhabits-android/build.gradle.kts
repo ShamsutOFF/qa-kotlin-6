@@ -102,19 +102,7 @@ dependencies {
     val kotlinVersion = "2.1.10"
     val kxCoroutinesVersion = "1.10.1"
     val ktorVersion = "1.6.8"
-    val espressoVersion = "3.6.1"
 
-    androidTestImplementation("androidx.test.espresso:espresso-contrib:$espressoVersion")
-    androidTestImplementation("androidx.test.espresso:espresso-core:$espressoVersion")
-    androidTestImplementation("com.google.dagger:dagger:$daggerVersion")
-    androidTestImplementation("com.linkedin.dexmaker:dexmaker-mockito:2.28.3")
-    androidTestImplementation("io.ktor:ktor-client-mock:$ktorVersion")
-    androidTestImplementation("io.ktor:ktor-jackson:$ktorVersion")
-    androidTestImplementation("androidx.annotation:annotation:1.7.1")
-    androidTestImplementation("androidx.test.ext:junit:1.2.1")
-    androidTestImplementation("androidx.test.uiautomator:uiautomator:2.3.0")
-    androidTestImplementation("androidx.test:rules:1.6.1")
-    androidTestImplementation("org.mockito.kotlin:mockito-kotlin:5.4.0")
     compileOnly("javax.annotation:jsr250-api:1.0")
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")
     implementation("com.github.AppIntro:AppIntro:6.3.1")
@@ -136,10 +124,36 @@ dependencies {
     implementation("nl.dionsegijn:konfetti-xml:2.0.2")
     implementation(project(":uhabits-core"))
     kapt("com.google.dagger:dagger-compiler:$daggerVersion")
-    kaptAndroidTest("com.google.dagger:dagger-compiler:$daggerVersion")
-    testImplementation("com.google.dagger:dagger:$daggerVersion")
-    testImplementation("junit:junit:4.13.2")
-    testImplementation("org.mockito.kotlin:mockito-kotlin:5.4.0")
+    implementation ("com.jakewharton.timber:timber:5.0.1")
+//    kaptAndroidTest("com.google.dagger:dagger-compiler:$daggerVersion")
+//    testImplementation("com.google.dagger:dagger:$daggerVersion")
+//    testImplementation("junit:junit:4.13.2")
+//    testImplementation("org.mockito.kotlin:mockito-kotlin:5.4.0")
+
+    // Kotest
+    val kotestVersion = "5.9.1"
+    testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
+    androidTestImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
+    androidTestImplementation("io.kotest:kotest-assertions-core:$kotestVersion")
+    androidTestImplementation("io.kotest:kotest-property:$kotestVersion")
+
+//    // Kaspresso
+    androidTestImplementation("com.kaspersky.android-components:kaspresso:1.6.0")
+    androidTestUtil("androidx.test:orchestrator:1.5.1")
+    androidTestImplementation("com.kaspersky.android-components:kaspresso-allure-support:1.6.0")
+
+    // Другие зависимости для тестирования
+    androidTestImplementation("androidx.test:runner:1.6.2")
+    androidTestImplementation("androidx.test:rules:1.6.1")
+    androidTestImplementation("androidx.test.ext:junit:1.2.1")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
+}
+//
+//tasks.withType<Test> {
+//    useJUnitPlatform()
+//}
+tasks.withType<Test>().configureEach {
+    useJUnitPlatform()
 }
 
 kapt {

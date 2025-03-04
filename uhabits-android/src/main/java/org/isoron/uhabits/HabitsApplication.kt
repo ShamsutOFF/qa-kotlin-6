@@ -31,6 +31,7 @@ import org.isoron.uhabits.inject.HabitsApplicationComponent
 import org.isoron.uhabits.inject.HabitsModule
 import org.isoron.uhabits.utils.DatabaseUtils
 import org.isoron.uhabits.widgets.WidgetUpdater
+import timber.log.Timber
 import java.io.File
 
 /**
@@ -45,6 +46,10 @@ class HabitsApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        if (BuildConfig.DEBUG) {
+            Timber.plant(Timber.DebugTree())
+        }
+
         context = this
 
         if (isTestMode()) {

@@ -48,6 +48,7 @@ import org.isoron.uhabits.inject.HabitsApplicationComponent
 import org.isoron.uhabits.utils.applyRootViewInsets
 import org.isoron.uhabits.utils.dismissCurrentDialog
 import org.isoron.uhabits.utils.restartWithFade
+import timber.log.Timber
 
 class ListHabitsActivity : AppCompatActivity(), Preferences.Listener {
 
@@ -80,6 +81,7 @@ class ListHabitsActivity : AppCompatActivity(), Preferences.Listener {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Timber.i("@@@ onCreate()")
         super.onCreate(savedInstanceState)
 
         appComponent = (applicationContext as HabitsApplication).component
@@ -114,6 +116,7 @@ class ListHabitsActivity : AppCompatActivity(), Preferences.Listener {
     }
 
     override fun onResume() {
+        Timber.i("@@@ onResume()")
         adapter.refresh()
         screen.onAttached()
         rootView.postInvalidate()

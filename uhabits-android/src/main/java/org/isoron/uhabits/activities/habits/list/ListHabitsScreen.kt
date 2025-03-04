@@ -74,6 +74,7 @@ import org.isoron.uhabits.utils.restartWithFade
 import org.isoron.uhabits.utils.showMessage
 import org.isoron.uhabits.utils.showSendEmailScreen
 import org.isoron.uhabits.utils.showSendFileScreen
+import timber.log.Timber
 import java.io.File
 import java.io.IOException
 import java.util.concurrent.TimeUnit
@@ -110,10 +111,12 @@ class ListHabitsScreen
     val activity = (context as AppCompatActivity)
 
     fun onAttached() {
+        Timber.d("@@@ onAttached()")
         commandRunner.addListener(this)
     }
 
     fun onDetached() {
+        Timber.d("@@@ onDetached()")
         commandRunner.removeListener(this)
     }
 
@@ -130,6 +133,7 @@ class ListHabitsScreen
     }
 
     private fun onOpenDocumentResult(resultCode: Int, data: Intent?) {
+        Timber.d("@@@ onOpenDocumentResult()")
         if (data == null) return
         if (resultCode != Activity.RESULT_OK) return
         try {
