@@ -108,6 +108,7 @@ class ListHabitsActivity : AppCompatActivity(), Preferences.Listener {
     }
 
     override fun onPause() {
+        Timber.i("@@@ onPause()")
         midnightTimer.onPause()
         screen.onDetached()
         adapter.cancelRefresh()
@@ -115,8 +116,16 @@ class ListHabitsActivity : AppCompatActivity(), Preferences.Listener {
         super.onPause()
     }
 
+    override fun onDestroy() {
+        Timber.i("@@@ onDestroy()")
+        super.onDestroy()
+    }
+
     override fun onResume() {
         Timber.i("@@@ onResume()")
+        if (intent == null) {
+            Timber.e("@@@ Intent is null!")
+        }
         adapter.refresh()
         screen.onAttached()
         rootView.postInvalidate()
@@ -177,7 +186,9 @@ class ListHabitsActivity : AppCompatActivity(), Preferences.Listener {
     }
 
     private fun parseIntents() {
+        Timber.i("@@@ parseIntents()")
         if (intent == null) return
+        Timber.i("@@@ parseIntents() INTENT NOT NULL!!!!")
         if (intent.action == ACTION_EDIT) {
             val habitId = intent.extras?.getLong("habit")
             val timestamp = intent.extras?.getLong("timestamp")
@@ -186,10 +197,11 @@ class ListHabitsActivity : AppCompatActivity(), Preferences.Listener {
                 component.listHabitsBehavior.onEdit(habit, Timestamp(timestamp))
             }
         }
-        intent = null
+//        intent = null
     }
 
     override fun onNewIntent(intent: Intent?) {
+        Timber.i("@@@ onNewIntent()")
         super.onNewIntent(intent)
         setIntent(intent)
     }

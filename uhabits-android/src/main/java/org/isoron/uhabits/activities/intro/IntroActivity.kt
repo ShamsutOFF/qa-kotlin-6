@@ -25,6 +25,7 @@ import androidx.fragment.app.Fragment
 import com.github.appintro.AppIntro2
 import com.github.appintro.AppIntroFragment
 import org.isoron.uhabits.R
+import timber.log.Timber
 
 /**
  * Activity that introduces the app to the user, shown only after the app is
@@ -33,6 +34,7 @@ import org.isoron.uhabits.R
 class IntroActivity : AppIntro2() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Timber.d("@@@ onCreate()")
         super.onCreate(savedInstanceState)
         showStatusBar(false)
 

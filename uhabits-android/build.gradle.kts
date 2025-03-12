@@ -131,27 +131,34 @@ dependencies {
 //    testImplementation("org.mockito.kotlin:mockito-kotlin:5.4.0")
 
     // Kotest
-    val kotestVersion = "5.9.1"
-    testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
-    androidTestImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
-    androidTestImplementation("io.kotest:kotest-assertions-core:$kotestVersion")
-    androidTestImplementation("io.kotest:kotest-property:$kotestVersion")
+//    val kotestVersion = "5.9.1"
+//    testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
+//    androidTestImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
+//    androidTestImplementation("io.kotest:kotest-assertions-core:$kotestVersion")
+//    androidTestImplementation("io.kotest:kotest-property:$kotestVersion")
 
-//    // Kaspresso
+    // Kaspresso
     androidTestImplementation("com.kaspersky.android-components:kaspresso:1.6.0")
-    androidTestUtil("androidx.test:orchestrator:1.5.1")
     androidTestImplementation("com.kaspersky.android-components:kaspresso-allure-support:1.6.0")
+    androidTestUtil("androidx.test:orchestrator:1.5.1")
+    androidTestImplementation("androidx.test.ext:junit-ktx:1.2.1")
+    androidTestImplementation("androidx.test:core-ktx:1.6.1")
+    // Tracing
+    runtimeOnly("androidx.tracing:tracing:1.2.0")
+//    // UIAutomator
+//    implementation("androidx.test.uiautomator:uiautomator:2.3.0")
 
-    // Другие зависимости для тестирования
-    androidTestImplementation("androidx.test:runner:1.6.2")
-    androidTestImplementation("androidx.test:rules:1.6.1")
-    androidTestImplementation("androidx.test.ext:junit:1.2.1")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
+    // Вариант с Какао + Hamcrest
+    androidTestImplementation ("com.agoda.kakao:kakao:2.4.0")
+    androidTestImplementation ("org.hamcrest:hamcrest-library:2.2")
+
+    // Espresso для работы с UI
+    androidTestImplementation ("androidx.test.espresso:espresso-core:3.6.1")
+//    androidTestImplementation ("androidx.test:runner:1.6.2")
+//    androidTestImplementation ("androidx.test:rules:1.6.1")
+//    androidTestImplementation ("androidx.test.ext:junit:1.2.1")
 }
-//
-//tasks.withType<Test> {
-//    useJUnitPlatform()
-//}
+
 tasks.withType<Test>().configureEach {
     useJUnitPlatform()
 }

@@ -50,6 +50,7 @@ class HabitsApplication : Application() {
             Timber.plant(Timber.DebugTree())
         }
 
+        Timber.i("@@@ onCreate()")
         context = this
 
         if (isTestMode()) {

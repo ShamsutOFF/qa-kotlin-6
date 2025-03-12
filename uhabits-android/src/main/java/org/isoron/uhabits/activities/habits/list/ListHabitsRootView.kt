@@ -50,6 +50,7 @@ import org.isoron.uhabits.utils.dim
 import org.isoron.uhabits.utils.dp
 import org.isoron.uhabits.utils.setupToolbar
 import org.isoron.uhabits.utils.sres
+import timber.log.Timber
 import javax.inject.Inject
 import kotlin.math.max
 import kotlin.math.min
@@ -120,12 +121,14 @@ class ListHabitsRootView @Inject constructor(
     }
 
     override fun onAttachedToWindow() {
+        Timber.d("@@@ onAttachedToWindow()")
         super.onAttachedToWindow()
         setupControllers()
         listAdapter.observable.addListener(this)
     }
 
     override fun onDetachedFromWindow() {
+        Timber.w("@@@ onDetachedFromWindow()")
         listAdapter.observable.removeListener(this)
         super.onDetachedFromWindow()
     }

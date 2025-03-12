@@ -48,10 +48,12 @@ open class ListHabitsBehavior @Inject constructor(
     private val bugReporter: BugReporter
 ) {
     fun onClickHabit(h: Habit) {
+        println("@@@ ListHabitsBehavior - onClickHabit()")
         screen.showHabitScreen(h)
     }
 
     fun onEdit(habit: Habit, timestamp: Timestamp?) {
+        println("@@@ ListHabitsBehavior - onEdit()")
         val entry = habit.computedEntries.get(timestamp!!)
         if (habit.type == HabitType.NUMERICAL) {
             val oldValue = entry.value.toDouble() / 1000
@@ -97,6 +99,7 @@ open class ListHabitsBehavior @Inject constructor(
     }
 
     fun onFirstRun() {
+        println("@@@ ListHabitsBehavior - onFirstRun()")
         prefs.isFirstRun = false
         prefs.updateLastHint(-1, getToday())
         screen.showIntroScreen()
@@ -125,6 +128,7 @@ open class ListHabitsBehavior @Inject constructor(
     }
 
     fun onStartup() {
+        println("@@@ ListHabitsBehavior - onStartup()")
         prefs.incrementLaunchCount()
         if (prefs.isFirstRun) onFirstRun()
     }
