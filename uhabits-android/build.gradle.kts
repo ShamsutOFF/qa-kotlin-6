@@ -1,22 +1,3 @@
-/*
- * Copyright (C) 2016-2021 Álinson Santos Xavier <git@axavier.org>
- *
- * This file is part of Loop Habit Tracker.
- *
- * Loop Habit Tracker is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by the
- * Free Software Foundation, either version 3 of the License, or (at your
- * option) any later version.
- *
- * Loop Habit Tracker is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
- * more details.
- *
- * You should have received a copy of the GNU General Public License along
- * with this program. If not, see <http://www.gnu.org/licenses/>.
- */
-
 plugins {
     id("com.android.application") version "8.8.0"
     id("org.jetbrains.kotlin.android")
@@ -28,13 +9,6 @@ tasks.compileLint {
     dependsOn("updateTranslators")
 }
 
-/*
-Added on top of kotlinOptions to work around this issue:
-https://youtrack.jetbrains.com/issue/KTIJ-24311/task-current-target-is-17-and-kaptGenerateStubsProductionDebugKotlin-task-current-target-is-1.8-jvm-target-compatibility-should#focus=Comments-27-6798448.0-0
-Updating gradle might fix this, so try again in the future to remove this and run:
-./gradlew --rerun-tasks :uhabits-android:kaptGenerateStubsReleaseKotlin
-If this doesn't produce any warning, try to remove it.
- */
 kotlin {
     jvmToolchain(11)
 }
@@ -125,17 +99,6 @@ dependencies {
     implementation(project(":uhabits-core"))
     kapt("com.google.dagger:dagger-compiler:$daggerVersion")
     implementation ("com.jakewharton.timber:timber:5.0.1")
-//    kaptAndroidTest("com.google.dagger:dagger-compiler:$daggerVersion")
-//    testImplementation("com.google.dagger:dagger:$daggerVersion")
-//    testImplementation("junit:junit:4.13.2")
-//    testImplementation("org.mockito.kotlin:mockito-kotlin:5.4.0")
-
-    // Kotest
-//    val kotestVersion = "5.9.1"
-//    testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
-//    androidTestImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
-//    androidTestImplementation("io.kotest:kotest-assertions-core:$kotestVersion")
-//    androidTestImplementation("io.kotest:kotest-property:$kotestVersion")
 
     // Kaspresso
     androidTestImplementation("com.kaspersky.android-components:kaspresso:1.6.0")
@@ -145,8 +108,6 @@ dependencies {
     androidTestImplementation("androidx.test:core-ktx:1.6.1")
     // Tracing
     runtimeOnly("androidx.tracing:tracing:1.2.0")
-//    // UIAutomator
-//    implementation("androidx.test.uiautomator:uiautomator:2.3.0")
 
     // Вариант с Какао + Hamcrest
     androidTestImplementation ("com.agoda.kakao:kakao:2.4.0")
@@ -154,9 +115,6 @@ dependencies {
 
     // Espresso для работы с UI
     androidTestImplementation ("androidx.test.espresso:espresso-core:3.6.1")
-//    androidTestImplementation ("androidx.test:runner:1.6.2")
-//    androidTestImplementation ("androidx.test:rules:1.6.1")
-//    androidTestImplementation ("androidx.test.ext:junit:1.2.1")
 }
 
 tasks.withType<Test>().configureEach {

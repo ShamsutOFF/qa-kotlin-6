@@ -101,6 +101,7 @@ open class ListHabitsBehavior @Inject constructor(
     fun onFirstRun() {
         println("@@@ ListHabitsBehavior - onFirstRun()")
         prefs.isFirstRun = false
+        println("@@@ ListHabitsBehavior - prefs.isFirstRun = ${prefs.isFirstRun}" )
         prefs.updateLastHint(-1, getToday())
         screen.showIntroScreen()
     }
@@ -130,6 +131,7 @@ open class ListHabitsBehavior @Inject constructor(
     fun onStartup() {
         println("@@@ ListHabitsBehavior - onStartup()")
         prefs.incrementLaunchCount()
+        println("@@@ ListHabitsBehavior - prefs.isFirstRun = ${prefs.isFirstRun}" )
         if (prefs.isFirstRun) onFirstRun()
     }
 

@@ -26,6 +26,7 @@ import org.isoron.uhabits.R
 import org.isoron.uhabits.core.AppScope
 import org.isoron.uhabits.core.preferences.Preferences
 import org.isoron.uhabits.inject.AppContext
+import timber.log.Timber
 import javax.inject.Inject
 
 @AppScope
@@ -40,14 +41,18 @@ class SharedPreferencesStorage
     private var preferences: Preferences? = null
 
     init {
+        Timber.d("@@@ SharedPreferences file: $sharedPrefs")
         sharedPrefs.registerOnSharedPreferenceChangeListener(this)
         PreferenceManager.setDefaultValues(context, R.xml.preferences, false)
     }
 
     override fun clear() = sharedPrefs.edit().clear().apply()
 
-    override fun getBoolean(key: String, defValue: Boolean) =
-        sharedPrefs.getBoolean(key, defValue)
+    override fun getBoolean(key: String, defValue: Boolean): Boolean {
+        Timber.d("@@@ getBoolean(%s, %b)", key, defValue)
+        return sharedPrefs.getBoolean(key, defValue)
+    }
+
 
     override fun getInt(key: String, defValue: Int) =
         sharedPrefs.getInt(key, defValue)

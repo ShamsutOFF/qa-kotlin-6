@@ -33,6 +33,7 @@ class PropertiesStorage(file: File) : Preferences.Storage {
     }
 
     override fun getBoolean(key: String, defValue: Boolean): Boolean {
+        println("@@@@@ PropertiesStorage getBoolean(key: $key, defValue: $defValue)")
         val value = props.getProperty(key, java.lang.Boolean.toString(defValue))
         return java.lang.Boolean.parseBoolean(value)
     }

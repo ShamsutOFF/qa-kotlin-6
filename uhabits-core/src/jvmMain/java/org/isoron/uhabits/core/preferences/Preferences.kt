@@ -119,6 +119,7 @@ open class Preferences(private val storage: Storage) {
         set(isDeveloper) {
             storage.putBoolean("pref_developer", isDeveloper)
         }
+
     var isFirstRun: Boolean
         get() = storage.getBoolean("pref_first_run", true)
         set(isFirstRun) {
