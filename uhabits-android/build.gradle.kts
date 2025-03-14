@@ -25,9 +25,12 @@ android {
         minSdk = 28
         targetSdk = 35
         applicationId = "org.isoron.uhabits"
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.kaspersky.kaspresso.runner.KaspressoRunner"
+        testInstrumentationRunnerArguments["clearPackageData"] = "true"
     }
-
+    testOptions {
+        execution = "ANDROIDX_TEST_ORCHESTRATOR"
+    }
     signingConfigs {
         if (System.getenv("LOOP_KEY_ALIAS") != null) {
             create("release") {

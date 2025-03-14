@@ -1,10 +1,15 @@
 package org.isoron.uhabits.activities.habits.list
 
+import android.Manifest
 import android.content.Context
 import androidx.preference.PreferenceManager
 import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
+import androidx.test.rule.GrantPermissionRule
+import com.kaspersky.components.alluresupport.withForcedAllureSupport
+import com.kaspersky.kaspresso.kaspresso.Kaspresso
+import com.kaspersky.kaspresso.params.VideoParams
 import com.kaspersky.kaspresso.screens.KScreen
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import io.github.kakaocup.kakao.dialog.KAlertDialog
@@ -15,6 +20,7 @@ import io.github.kakaocup.kakao.text.KTextView
 import org.isoron.uhabits.R
 import org.junit.After
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import timber.log.Timber
 
@@ -44,8 +50,16 @@ object KaspHabitDetailScreen : KScreen<KaspHabitDetailScreen>() {
     val deleteDialog = KAlertDialog()
 }
 
-class CreateNewHabitKaspressoTest : TestCase() {
+class CreateNewHabitKaspressoTest : TestCase(
+    kaspressoBuilder = Kaspresso.Builder.withForcedAllureSupport()
+) {
     private lateinit var activityScenario: ActivityScenario<ListHabitsActivity>
+
+    @get:Rule
+    val runtimePermissionRule: GrantPermissionRule = GrantPermissionRule.grant(
+        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+        Manifest.permission.READ_EXTERNAL_STORAGE
+    )
 
     @Before
     fun setUp() {
